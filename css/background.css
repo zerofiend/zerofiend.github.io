@@ -55,3 +55,7 @@
     rgba(109, 186, 130, 0.1) 100%
   );
 }*/
+/* 设置思维导图的宽度 */
+.pullquote {
+  max-width: 100% !important;
+}
