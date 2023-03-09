@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>编程学习路线图</title>
+      <link href="/post/a9ef46dc.html"/>
+      <url>/post/a9ef46dc.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/learnroadmap.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思维导图 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【蓝桥杯真题】p2701 取模</title>
       <link href="/post/7420a9e6.html"/>
       <url>/post/7420a9e6.html</url>
@@ -31,11 +58,11 @@
     
     
     <entry>
-      <title>Hello World</title>
+      <title>个人博客搭建日记</title>
       <link href="/post/4a17b156.html"/>
       <url>/post/4a17b156.html</url>
       
-        <content type="html"><![CDATA[<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><blockquote><p>这是我搭完个人博客后的第一篇博客，没有什么别的内容，主要是记录一下。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="个人博客搭建日记"><a href="#个人博客搭建日记" class="headerlink" title="个人博客搭建日记"></a>个人博客搭建日记</h1><p>这一篇用于记录我搭建这个博客项目的过程以及之后的改进内容。</p>]]></content>
       
       
       <categories>
@@ -49,7 +76,7 @@
             
             <tag> 日常 </tag>
             
-            <tag> 杂谈 </tag>
+            <tag> 搭建 </tag>
             
         </tags>
       
