@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【汇编语言】二进制的原码、反码和补码</title>
+      <link href="/post/6d0400f9.html"/>
+      <url>/post/6d0400f9.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章用来汇总我学习汇编语言时遇到的有符号数的二进制原码。反码和补码的知识。</p><h2 id="机器字（machine-word）长"><a href="#机器字（machine-word）长" class="headerlink" title="机器字（machine word）长"></a>机器字（machine word）长</h2><ul><li>一般指计算机进行一次整数运算能处理的二进制数据的位数，通常也包括数据地址长度。</li><li>32位字长<ul><li>地址的表示空间是4GB</li><li>对很多内存需求大的应用而言，非常有限</li></ul></li><li>64位字长<ul><li>地址表示空间约是1.8 * 10^19 bytes</li><li>目前的 x86-64 机型实际支持48位宽的地址：256TB</li></ul></li></ul><h2 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h2><p>无符号数不存在原码、反码和补码，无符号数直接将数字化成二进制数储存在对应的储存器或者寄存器中，如果是8位的，则表示的范围是0~255，详情见上文。</p><h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h3><p>原码是将最高位作为符号位（0表示正，1表示负），其余数字表示数值本身的绝对值数字表示方式。</p><h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>如果是正数则表示方法和原码一样，如果是负数，符号位不变，其余各位取反，则得到这个数字的反码表示形式。</p><h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>如果是正数，则表示方法和原码一样，如果是负数，则将数字的反码加上1。</p><p>在计算机中普遍采用补码来作为数据存储，因为它能直接进行加和减的运算。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 汇编语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 汇编语言 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机组成原理学习笔记</title>
       <link href="/post/980e11ce.html"/>
       <url>/post/980e11ce.html</url>
