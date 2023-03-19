@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>【操作系统】2.计算机硬件</title>
+      <link href="/post/2a5dfac6.html"/>
+      <url>/post/2a5dfac6.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="操作系统的硬件环境"><a href="#操作系统的硬件环境" class="headerlink" title="操作系统的硬件环境"></a>操作系统的硬件环境</h1><ul><li>中央处理器（CPU）</li><li>存储系统</li><li>中断机制</li><li>I&#x2F;O系统</li><li>系统调用</li></ul><p><img src="/images/operating-system-2.png" alt="2"></p><h1 id="主板中的北桥-x2F-南桥芯片"><a href="#主板中的北桥-x2F-南桥芯片" class="headerlink" title="主板中的北桥&#x2F;南桥芯片"></a>主板中的北桥&#x2F;南桥芯片</h1><ul><li>北桥芯片<ul><li>主板芯片组的核心芯片，也称为主桥</li><li>主要负责与CPU的联系，控制内存、AGP等数据传输</li><li>计算量大、数据传输量大，因此放置在与CPU相近的位置以保证传输速度和能源低耗</li></ul></li><li>南桥芯片<ul><li>负责各类低速I&#x2F;O总线以及I&#x2F;O设备的管理</li><li>负责控制时钟、BIOS、电源、键盘、网卡等各类低速设备</li><li>相比北桥芯片，南桥芯片工作量较小、散热量小</li></ul></li><li>北桥与南桥连接<ul><li>南桥芯片不与CPU直接通信，通过特定的连接方式与北桥芯片连通</li><li>例如Intel的Hub Architecture、SIS的MultiThreaded</li></ul></li></ul><h1 id="中央处理器（CPU）"><a href="#中央处理器（CPU）" class="headerlink" title="中央处理器（CPU）"></a>中央处理器（CPU）</h1><p>设置有用户态和内核态。</p><p>处理器由运算器、控制器、一系列的寄存器以及高速缓存构成</p><h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><p>运算器实现指令中的算术和逻辑运算，是计算机计算的核心</p><h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>控制器负责控制程序运行的流程，包括取指令、维护CPU状态、CPU与内存的交互等等</p><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>寄存器是指令在CPU内部作处理的过程中暂存数据、地址以及指令信息的存储设备</p><p>在计算机的存储系统中它具有最快的访问速度</p><ul><li>寄存器提供了一定的存储能力</li><li>速度比主存快得多</li><li>造价高，容量一般都很小</li></ul><p>两类寄存器：</p><ul><li>用户可见寄存器，高级语言编译器通过算法分配并使用之，以减少程序访问主存次数</li><li>控制和状态寄存器，用于控制处理器的操作由OS的特权代码使用, 以控制其他程序的执行</li></ul><h4 id="用户可见寄存器"><a href="#用户可见寄存器" class="headerlink" title="用户可见寄存器"></a>用户可见寄存器</h4><ul><li>机器语言直接引用</li><li>包括数据寄存器、地址寄存器以及条件码寄存器<ul><li>数据寄存器（data register）又称通用寄存器主要用于各种算术逻辑指令和访存指令</li><li>地址寄存器（address register）用于存储数据及指令的物理地址、线性地址或者有效地址，用于某种特定方式的寻址。如index register、segment pointer、stack pointer</li><li>条件码寄存器保存CPU操作结果的各种标记位如算术运算产生的溢出、符号等等</li></ul></li></ul><h4 id="控制和状态寄存器"><a href="#控制和状态寄存器" class="headerlink" title="控制和状态寄存器"></a>控制和状态寄存器</h4><ul><li>用于控制处理器的操作</li><li>大部分对于用户是不可见的</li><li>一部分可以在某种特权模式（由OS使用）下访问</li></ul><p>常见的控制和状态寄存器：</p><ul><li>程序计数器（PC：Program Counter），记录将要取出的指令的地址</li><li>指令寄存器（IR：Instruction Register），包含最近取出的指令</li><li>程序状态字（PSW：Program Status Word），记录处理器的运行模式信息等等</li></ul><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>高速缓存处于CPU和物理内存之间一般由控制器中的内存管理单元（MMU：Memory Management Unit）管理</p><p>访问速度快于内存，低于寄存器</p><p>利用程序局部性原理使得高速指令处理和低速内存访问得以匹配，从而提高CPU的效率</p><h3 id="特权指令和非特权指令"><a href="#特权指令和非特权指令" class="headerlink" title="特权指令和非特权指令"></a>特权指令和非特权指令</h3><p>特权指令：只能由操作系统使用的指令</p><ul><li>使用多道程序设计技术的计算机指令系统必须要区分为特权指令和非特权指令</li><li>处理器通过特殊的机制将处理器状态切换到操作系统运行的特权状态（管态）</li></ul><p>多数系统将处理器工作状态划分为管态和目态</p><p><strong>管态</strong>：操作系统管理程序运行的状态，较高的特权级别，又称为特权态（特态）、核心态、系统态</p><p><strong>目态</strong>：用户程序运行时的状态，较低的特权级别，又称为普通态（普态）、用户态</p><p>有些系统将处理器状态划分核心状态、管理状态和用户程序状态（目标状态）三种</p><h3 id="程序状态字PSW（Program-Status-Word）"><a href="#程序状态字PSW（Program-Status-Word）" class="headerlink" title="程序状态字PSW（Program Status Word）"></a>程序状态字PSW（Program Status Word）</h3><p>在PSW中专门设置一位，根据运行程序使用指令的权限而设置CPU状态</p><ul><li>CPU的工作状态码——指明管态还是目态，用来说明当前在CPU上执行的是操作系统还是一般用户，从而决定其是否可以使用特权指令或拥有其他的特殊权力</li><li>条件码——反映指令执行后的结果特征</li><li>中断屏蔽码——指出是否允许中断</li></ul><h2 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h2><ul><li>作业必须把它的程序和数据存放在内存中才能运行</li><li>多道程系统中，若干个程序和相关的数据要放入内存操作系统要管理、保护程序和数据，使它们不至于受到破坏</li><li>操作系统本身也要存放在内存中并运行</li></ul><h3 id="存储器的类型"><a href="#存储器的类型" class="headerlink" title="存储器的类型"></a>存储器的类型</h3><p>半导体存储器 实现 内存：</p><ul><li>存储器芯片的内部组织结构</li><li>静态存储器（SRAM）</li><li>异步动态随机存储器（DRAM）</li><li>同步动态随机存储器（SDRAM）<ul><li>双倍数据速率SDRAM（DDR SDRAM）（开放标准）</li><li>Rambus公司的SDRAM</li></ul></li></ul><p>只读型存储器：</p><ul><li>ROM（ Read-Only Memory） ：只能从其中读取数据，但不能随意用普通方法写入数据（写入数据只能用特殊方法）<ul><li>在微机中，一些常驻内存的模块以微程序形式固化在ROM中，如:PC BIOS和CBASIC解释程序被固化于ROM中</li></ul></li><li>PROM：可编程只读存储器，使用特殊PROM写入器写入数据</li><li>EPROM：电可擦写可编程只读存储器，用特殊的紫外线光照射此芯片，以“擦去”信息，恢复原来状态，再使用特殊EPROM写入器写入数据</li><li>闪存（flash memory）</li></ul><h3 id="存储访问局部性原理"><a href="#存储访问局部性原理" class="headerlink" title="存储访问局部性原理"></a>存储访问局部性原理</h3><p>程序局部性原理：是指程序在执行时呈现出局部性规律，即在一段时间内，整个程序的执行仅限于程序中的某一部分。相应地，执行所访问的存储空间也局限于某个内存区域，具体来说，局部性通常有两种形式：时间局部性和空间局部性。</p><p>时间局部性：被引用过一次的存储器位置在未来会被多次引用（通常在循环中）。</p><p>空间局部性：如果一个存储器的位置被引用，那么将来他附近的位置也会被引用。</p><p><strong>个人理解：</strong><em>用于快速命中将要访问的数据所存储的位置，操作系统会将上述方式运用到存储中，将常用的数据存放到高速缓存中。</em></p><h3 id="存储保护措施"><a href="#存储保护措施" class="headerlink" title="存储保护措施"></a>存储保护措施</h3><p>对主存中的信息加以严格的保护，使操作系统及其他程序不被破坏，是其正确运行的基本条件之一</p><p>多用户，多任务操作系统：<br>    OS给每个运行进程分配一个存储区域</p><p>程序 -&gt; 进程</p><ul><li>将代码和数据装入内存</li><li>建立堆，栈</li><li>将控制权从OS转交给进程</li><li>同时保护OS和进程的私用地址空间</li></ul><h3 id="保护的硬件支持"><a href="#保护的硬件支持" class="headerlink" title="保护的硬件支持"></a>保护的硬件支持</h3><p>解决方案依赖于配有特殊硬件的CPU</p><p>硬件可提供如下功能：</p><ul><li>界地址寄存器（界限寄存器）</li><li>地址转换机制</li></ul><h4 id="界地址寄存器（界限寄存器）"><a href="#界地址寄存器（界限寄存器）" class="headerlink" title="界地址寄存器（界限寄存器）"></a>界地址寄存器（界限寄存器）</h4><p>界地址寄存器被广泛使用的一种存储保护技术</p><p>机制比较简单，易于实现</p><p>实现方法：</p><ul><li>在CPU中设置一对下限寄存器和上限寄存器<br>存放用户作业在主存中的下限和上限地址</li><li>也可将一个寄存器作为基址寄存器，另一寄存器作为限长寄存器（指示存储区长度）</li><li>每当CPU要访问主存，硬件自动将被访问的主存地址与界限寄存器的内容进行比较，以判断是否越界</li><li>如果未越界，则按此地址访问主存，否则将产生程序中断——越界中断（存储保护中断）</li></ul><h4 id="地址转换机制"><a href="#地址转换机制" class="headerlink" title="地址转换机制"></a>地址转换机制</h4><p>同时有多个程序在内存</p><p>程序在内存的位置不是固定的而是随机的</p><ul><li>虚拟地址空间<ul><li>每个程序及操作系统都有自己私有的内存地址空间.</li></ul></li><li>地址转换:<ul><li>将虚拟地址转换为硬件物理地址</li><li>执行地址转换的硬件： Memory Management Unit (MMU，内存管理单元)</li></ul></li></ul><h2 id="中断机制"><a href="#中断机制" class="headerlink" title="中断机制"></a>中断机制</h2><h3 id="中断技术"><a href="#中断技术" class="headerlink" title="中断技术"></a>中断技术</h3><p>有人把操作系统称为是由“中断驱动”或者 “（中断）事件驱动”<br>因为：</p><ul><li>它使得OS可以捕获用户程序发出的系统功能调用</li><li>及时处理设备的中断请求</li><li>防止用户程序中破坏性的活动等等</li></ul><h3 id="中断的概念"><a href="#中断的概念" class="headerlink" title="中断的概念"></a>中断的概念</h3><ul><li>CPU对系统发生的某个事件作出的一种反应</li><li>CPU暂停正在执行的程序，保留现场后自动转去执行相应事件的处理程序，处理完成后返回断点，继续执行被打断的程序</li></ul><p>特点：</p><ol><li>中断随机的</li><li>中断是可恢复的</li><li>中断是自动处理的</li></ol><p>引入中断的目的：</p><ul><li>解决主机与外设的并行工作问题</li><li>实现实时控制</li></ul><h3 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h3><p>中断系统的两大组成部分：硬件中断装置和软件中断处理程序</p><ul><li>中断系统的硬件中断装置-中断系统的机制部分负责捕获中断源发出的中断请求，以一定方式响应中断源，然后将处理器控制权交给特定的中断处理程序</li><li>软件中断处理程序-中断系统的策略部分负责辨别中断类型并做出相应的操作</li></ul><p>中断屏蔽有两种方法：</p><ul><li>硬件实现——由软件置处理机优先级，硬件按系统设计时的约定，屏蔽那些低优先级中断</li><li>软件实现——由软件按操作系统优先级约定,设置屏蔽寄存器</li></ul><h3 id="中断类型"><a href="#中断类型" class="headerlink" title="中断类型"></a>中断类型</h3><h4 id="强迫性中断"><a href="#强迫性中断" class="headerlink" title="强迫性中断"></a>强迫性中断</h4><p>正在运行的程序所不期望的，由于某种硬件故障或外部请求引起的</p><ul><li>输入&#x2F;输出(I&#x2F;O)中断：主要来自外部设备通道</li><li>程序性中断：运行程序中本身的中断(如溢出,缺页中断,缺段中断,地址越界)</li><li>时钟中断</li><li>控制台中断</li><li>硬件故障</li></ul><h4 id="自愿性中断"><a href="#自愿性中断" class="headerlink" title="自愿性中断"></a>自愿性中断</h4><p>用户在程序中有意识安排的中断，是由于用户在编制程序时因为要求操作系统提供服务，有意使用“访管”指令或系统调用，使中断发生</p><ul><li>执行I&#x2F;O，创建进程，分配内存</li><li>信号量操作，发送&#x2F;接收消息</li></ul><h4 id="处理器如何发现中断信号？"><a href="#处理器如何发现中断信号？" class="headerlink" title="处理器如何发现中断信号？"></a>处理器如何发现中断信号？</h4><p>处理器的控制部件中设一个能检测中断的机构称为中断扫描机构</p><ul><li>在每条指令执行周期的最后时刻扫描中断寄存器，询问是否有中断信号</li><li>若无中断信号，继续执行下一条指令</li><li>若有中断，中断硬件将该中断触发器内容按规定编码送入PSW的相应位，称为中断码</li><li>通过交换中断向量引出中断处理程序</li></ul><h2 id="IO系统"><a href="#IO系统" class="headerlink" title="IO系统"></a>IO系统</h2><p>I&#x2F;O控制使用下面几种技术：</p><ul><li>程序控制</li><li>中断驱动</li><li>直接存储器存取（DMA）</li><li>通道</li></ul><h3 id="程序控制IO技术"><a href="#程序控制IO技术" class="headerlink" title="程序控制IO技术"></a>程序控制IO技术</h3><p>由处理器提供I&#x2F;O相关指令来实现</p><ul><li>I&#x2F;O处理单元处理请求并设置I&#x2F;O状态寄存器相关位</li><li>不中断处理器，也不给处理器警告信息</li><li>处理器定期轮询I&#x2F;O单元的状态，直到处理完毕</li></ul><p>I&#x2F;O软件包含直接操纵I&#x2F;O的指令</p><ul><li>控制指令: 用于激活外设，并告诉它做什么</li><li>状态指令: 用于测试I&#x2F;O控制中的各种状态和条件</li><li>数据传送指令: 用于在设备和主存之间来回传送数据</li></ul><p>主要缺陷：处理器必须关注I&#x2F;O处理单元的状态，因而耗费大<br>量时间轮询信息，严重地降低了系统性能</p><h3 id="中断驱动IO技术"><a href="#中断驱动IO技术" class="headerlink" title="中断驱动IO技术"></a>中断驱动IO技术</h3><p>为了解决程序控制I&#x2F;O方法的主要问题应该让处理器从轮询任务中解放出来使I&#x2F;O操作和指令执行并行起来</p><p>具体作法：</p><ul><li>当I&#x2F;O处理单元准备好与设备交互的时候</li><li>通过物理信号通知处理器，即中断处理器</li></ul><h3 id="DMA技术"><a href="#DMA技术" class="headerlink" title="DMA技术"></a>DMA技术</h3><p>中断的引入大大地提高了处理器处理I&#x2F;O的效率当处理器和I&#x2F;O间传送数据时，效率仍旧不高</p><p>解决方法：</p><p>直接存储器访问（DMA：Direct Memory Access）</p><ul><li>通过系统总线中一独立控制单元——DMA控制器</li><li>自动控制成块数据在内存和I&#x2F;O单元间的传送</li><li>大大提高处理I&#x2F;O的效能</li></ul><p>当处理器需要读写一整块数据时给DMA控制单元发送一条命令</p><p>包含：是否请求一次读或写，I&#x2F;O设备的编址，开始读或写的主存编址，需要传送的数据长度等信息</p><ul><li>处理器发送完命令后就可处理其他事情</li><li>DMA控制器将自动管理数据的传送</li><li>当这个过程完成后，它会给处理器发一个中断处理器只在开始传送和传送结束时关注一下就可</li></ul><h3 id="通道"><a href="#通道" class="headerlink" title="通道"></a>通道</h3><p>独立于中央处理器，专门负责数据I&#x2F;O传输的处理机</p><ul><li>它对外设实现统一管理</li><li>代替CPU对I&#x2F;O操作进行控制</li><li>使CPU和外设可以并行工作</li></ul><p>通道又称为I&#x2F;O处理机</p><p>引入通道的目的:</p><ul><li>为了使CPU从I&#x2F;O事务中解脱出来</li><li>同时为了提高CPU与设备、设备与设备之间的并行<br>度</li></ul><h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>系统调用：用户在程序中调用操作系统所提供的一些子功能</p><ul><li>这是特殊的过程调用，由特殊的机器指令实现（每种机器的机器指令集中都有一条系统调用指令——访管指令）</li><li>这条指令将系统转入管态</li><li>系统调用是一个低级过程，只能由汇编语言直接访问</li><li>系统调用是操作系统提供给编程人员的唯一接口</li><li>利用系统调用，动态请求和释放系统资源完成与硬件相关的工作以及控制程序的执行等</li></ul><p>每个操作系统都提供几百种系统调用</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 编程 </tag>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【操作系统】1.概述</title>
+      <link href="/post/fea825bd.html"/>
+      <url>/post/fea825bd.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="操作系统概念"><a href="#操作系统概念" class="headerlink" title="操作系统概念"></a>操作系统概念</h1><h2 id="什么是操作系统？"><a href="#什么是操作系统？" class="headerlink" title="什么是操作系统？"></a>什么是操作系统？</h2><p>操作系统(Operation System, OS) 是<strong>指控制和管理</strong>整个计算机系统的硬件和软件资源，并合理的<strong>组织和调度</strong>计算机的工作和资源的分配，以提供给用户和其它软件方便的接口和环境，它是计算机系统中最基本的系统软件。</p><h2 id="操作系统特征"><a href="#操作系统特征" class="headerlink" title="操作系统特征"></a>操作系统特征</h2><p>并发、共享、虚拟、异步</p><h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>并发 &#x3D; 宏观上并行 + 微观上串行</p><h3 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h3><p>操作系统的共享性指的是，操作系统中的资源可供内存中的多个并发运行的进程共同使用。</p><h3 id="虚拟"><a href="#虚拟" class="headerlink" title="虚拟"></a>虚拟</h3><p>操作系统的虚拟性指的是，操作系统会把一个物理上的实体变为若干个逻辑上的对应物，物理实体是实际存在的，而逻辑对应物是用户感受到的。</p><h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>操作系统的异步性是指，在多道进程运行的环境下，进程之中指令的执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进，这就是异步性。</p><h2 id="计算机操作系统功能"><a href="#计算机操作系统功能" class="headerlink" title="计算机操作系统功能"></a>计算机操作系统功能</h2><p>管理计算机资源并提供用户接口</p><h1 id="串行、并行和并发"><a href="#串行、并行和并发" class="headerlink" title="串行、并行和并发"></a>串行、并行和并发</h1><p><img src="/images/operating-system-1.png" alt="1"></p><ul><li>串行是单个处理器按顺序执行</li></ul><ul><li>并发(Concurrency)，体现在<ul><li>单个处理器</li><li>逻辑上同步运行</li></ul></li><li>并行(Parallelism)，体现在<ul><li>多处理器，多核心</li><li>物理上同步运行</li></ul></li></ul><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 编程 </tag>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【汇编语言】二进制的原码、反码和补码</title>
       <link href="/post/6d0400f9.html"/>
       <url>/post/6d0400f9.html</url>
