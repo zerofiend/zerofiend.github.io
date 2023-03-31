@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>【算法】排序——冒泡排序</title>
+      <title>【算法】冒泡排序</title>
       <link href="/post/3c93564.html"/>
       <url>/post/3c93564.html</url>
       
@@ -439,7 +439,7 @@
       <link href="/post/4a17b156.html"/>
       <url>/post/4a17b156.html</url>
       
-        <content type="html"><![CDATA[<h1 id="个人博客搭建日记"><a href="#个人博客搭建日记" class="headerlink" title="个人博客搭建日记"></a>个人博客搭建日记</h1><p>这一篇用于记录我搭建这个博客项目的过程以及之后的改进内容。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+        <content type="html"><![CDATA[<h1 id="个人博客搭建日记"><a href="#个人博客搭建日记" class="headerlink" title="个人博客搭建日记"></a>个人博客搭建日记</h1><p>这一篇用于记录我搭建这个博客项目的过程以及之后的改进内容。</p><h2 id="初始搭建"><a href="#初始搭建" class="headerlink" title="初始搭建"></a>初始搭建</h2><p>通过<a href="https://butterfly.js.org/">hexo butterfly</a>官方文档进行项目的搭建。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
       
       
       <categories>
