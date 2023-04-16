@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>【项目部署】MkDocs主题Material的使用</title>
+      <link href="/post/555d95cb.html"/>
+      <url>/post/555d95cb.html</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Material for MkDocs 是一个MKDocs的主题。</span><br><span class="line">详情见官方文档：</span><br><span class="line">[Material for MkDocs (squidfunk.github.io)](https://squidfunk.github.io/mkdocs-material/)</span><br></pre></td></tr></table></figure><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目部署 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 项目部署 </tag>
+            
+            <tag> 工具 </tag>
+            
+            <tag> MKDocs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【项目部署】个人文档构建工具MKDocs搭建</title>
+      <link href="/post/4cc42c7c.html"/>
+      <url>/post/4cc42c7c.html</url>
+      
+        <content type="html"><![CDATA[<p>MkDocs是可以在本地一键部署搭建的文档构建工具，是一个快速、简单并且美观的静态网站部署工具，通过单个yaml文件来配置整个项目，通过markdown来生成文档。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mkdocs</span><br></pre></td></tr></table></figure><h2 id="创建新项目"><a href="#创建新项目" class="headerlink" title="创建新项目"></a>创建新项目</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdocs new my<span class="literal">-project</span></span><br></pre></td></tr></table></figure><p>创建完的项目中docs&#x2F;文件夹用于存放文档源文件，mkdocs.yml是配置文件</p><p>配置文件中<code>site_name</code>和<code>site_url</code>配置是唯一必须的两个选项，前者说明了项目的名称，后者说明了项目的地址</p><p>项目可以在启动时进行实时的更新预览</p><h2 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdocs serve</span><br></pre></td></tr></table></figure><h2 id="添加页面"><a href="#添加页面" class="headerlink" title="添加页面"></a>添加页面</h2><p>通过在docs&#x2F;目录下添加新的.md文档，再在配置文件中配置<code>nav</code>项来加载文档：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">site_name:</span> <span class="string">MkLorum</span> </span><br><span class="line"><span class="attr">site_url:</span> <span class="string">https://example.com/</span> </span><br><span class="line"><span class="attr">nav:</span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">Home:</span> <span class="string">index.md</span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">About:</span> <span class="string">about.md</span></span><br></pre></td></tr></table></figure><h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>通过设置配置文件中的<code>theme</code>属性来配置主题：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">site_name:</span> <span class="string">MkLorum</span> </span><br><span class="line"><span class="attr">site_url:</span> <span class="string">https://example.com/</span> </span><br><span class="line"><span class="attr">nav:</span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">Home:</span> <span class="string">index.md</span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">About:</span> <span class="string">about.md</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">readthedocs</span></span><br></pre></td></tr></table></figure><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><p>通过下面的方式来构建项目</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdocs build</span><br></pre></td></tr></table></figure><h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>通过git来将项目上传到github上，再通过github pages来访问。</p><p>首先建立git仓库</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>再设置远程仓库</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add [自定义名称（建议origin）] [远程仓库地址]</span><br></pre></td></tr></table></figure><p>再通过mkdocs提供的方式上传：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdocs gh-deploy</span><br></pre></td></tr></table></figure><p>之后便可以通过github pages来访问相应的文档地址了。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目部署 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 项目部署 </tag>
+            
+            <tag> 工具 </tag>
+            
+            <tag> MKDocs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【操作系统】进程和线程</title>
       <link href="/post/2a9626e3.html"/>
       <url>/post/2a9626e3.html</url>
